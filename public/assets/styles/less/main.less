@@ -1,0 +1,195 @@
+html, body {
+	width:100%;
+	height:100%;
+}
+
+section {
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	min-height:100%;
+	background:transparent center no-repeat;
+	background-size:cover;
+}
+
+.btn {
+	text-transform: uppercase;
+}
+
+.navigation-container {
+
+	text-align: center;
+	padding: 3em 0 0;
+
+	ul {
+		display: inline-block;
+		list-style: none;
+		margin: 0;
+		padding:0;
+
+		li {
+			display: inline-block;
+			font-family: @font-family-serif;
+			font-size: 1.3em;
+			padding: 0 0.8em;
+
+			a {
+				text-decoration: none;
+				text-transform: uppercase;
+				font-weight: bold;
+				color: @white-color;
+			}
+		}
+	}
+}
+
+.welcome {
+
+	text-align: center;
+	color: @white-color;
+
+
+	.content {
+
+		width: 552px;
+		margin: 0 auto;
+		.translate( -16px, 0 );
+		text-transform: uppercase;
+		font-size: 36px;
+
+		.names {
+
+			.hide-text();
+			display: inline-block;
+			background: url('../images/aleycris.png');
+			width: 552px;
+			height: 83px;
+			margin: 30px 0 20px;
+
+		}
+
+		h2 {
+			font-family: @font-featured;
+			font-size: 126px;
+			margin-top: 0;
+		}
+
+		.date-ribbon {
+			color: @body-bg;
+			background: url('../images/ribbon.png');
+			width: 553px;
+			height: 79px;
+			font-family: @font-family-serif;
+			line-height: 79px;
+			margin: 20px 0;
+		}
+	}
+}
+
+.the-place {
+	background: #97d4d9;
+
+	.content {
+		position: absolute;
+		width: 70%;
+		margin: 0 auto;
+		background: #fff;
+		top: 50%;
+		left: 50%;
+		.translate(-50%, -50%);
+
+		h2 {
+			font-family: @font-featured;
+			font-size: 126px;
+			margin-top: 0;
+			text-transform: uppercase;
+		}
+
+		.info {
+			padding: 20px;
+			font-size: 23px;
+
+			width: 38%;
+			float: left;
+		}
+	}
+}
+
+
+.the-party {
+	background: #e8f4ee;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 24px;
+
+	h2 {
+		font-family: @font-featured;
+		font-size: 126px;
+		margin-top: 30px;
+		margin-bottom: 20px;
+		text-transform: uppercase;
+	}
+
+	@feature-width: 350px;
+
+	.features-wrapper {
+		width: @feature-width;
+		margin: 0 auto;
+		.translate(50%, 0);
+
+		ul {
+
+			padding: 0;
+
+			border-left: 4px solid #cbd5d0;
+
+			list-style: none;
+			text-align: left;
+
+			li {
+
+				width: @feature-width;
+				padding: 0 0 35px 20px;
+				clear: both;
+				.clearfix();
+
+				img {
+					float: left;
+					margin-right: 20px;
+				}
+
+				&:nth-child(odd) {
+					padding: 0 20px 35px 0;
+					text-align: right;
+					.translate( -100%, 0 );
+
+					img {
+						float: right;
+						margin-right: 0;
+						margin-left: 20px;
+					}
+				}
+
+				&.center {
+					padding: 0 0 35px 0;
+					margin-left: -63px;
+					text-align: left;
+					.translate(0,0);
+
+					img {
+						float: left;
+						margin-right: 20px;
+						margin-left: 0;
+					}
+				}
+
+				&:last-child {
+					padding-bottom: 0;
+				}
+			}
+		}
+	}
+
+
+}
