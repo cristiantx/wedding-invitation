@@ -84,7 +84,10 @@ module.exports = function (grunt) {
 			frontend: {
 				src: [
 					'public/vendor/jquery/dist/jquery.js',
-					'public/vendor/skrollr/src/skrollr.js',
+					'public/vendor/jquery.smooth-scroll/jquery.smooth-scroll.js',
+					'public/vendor/scrollReveal.js/scrollReveal.js',
+					'public/vendor/headroom.js/dist/headroom.js',
+					'public/vendor/headroom.js/dist/jQuery.headroom.js',
 					'public/assets/scripts/script.js'
 				],
 				dest: 'public/assets/scripts/script.min.js',

@@ -13,15 +13,27 @@
 	<body>
 
 		<div id="skrollr-body">
+			<header class="navigation-container">
+				<ul>
+					<li><a href="#place">El lugar</a></li>
+					<li><a href="#party">La fiesta</a></li>
+					<li>{{ HTML::image('assets/images/anillos.png'); }}</li>
+					<li><a href="#gift">El regalo</a></li>
+					<li><a href="#rsvp">Asistencia</a></li>
+				</ul>
+			</header>
 			@include('welcome')
 			@include('location')
 			@include('party')
+			@include('gift')
+			@include('rsvp')
 		</div>
 
 
 		@if ( App::environment('local') )
 		<script src="//localhost:3100/livereload.js"></script>
 		@endif
+		<script src='https://maps.googleapis.com/maps/api/js?key=&sensor=false&extension=.js'></script>
 		<script src="{{ asset('assets/scripts/script.min.js'); }}"></script>
 	</body>
 </html>
