@@ -15,7 +15,7 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function home( $invite_id ) {
+	public function home( $invite_id = false ) {
 
 		$invites = [];
 
