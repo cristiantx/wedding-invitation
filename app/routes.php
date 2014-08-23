@@ -16,6 +16,8 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('/invitados', 'AdminController@showAdmin');
-Route::post('/invitados', 'AdminController@saveInvites');
-Route::post('/invitados/grupo', 'GroupsController@store');
+Route::group(array('before' => 'auth.basic'), function() {
+	Route::get('/invitados', 'AdminController@showAdmin');
+	Route::post('/invitados', 'AdminController@saveInvites');
+	Route::post('/invitados/grupo', 'GroupsController@store');
+});

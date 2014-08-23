@@ -15,9 +15,15 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
-	{
-		return View::make('hello');
+	public function showWelcome( $invite_id ) {
+
+		if( $invite_id ) {
+			$invite = Invite::find( Crypt::decrypt($invite_id) );
+		}
+
+
+		return View::make('hello')->with('invite');
+
 	}
 
 }
