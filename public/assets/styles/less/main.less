@@ -21,6 +21,7 @@ section {
 
 .btn {
 	text-transform: uppercase;
+	font-family: @font-family-serif;
 }
 
 
@@ -300,6 +301,67 @@ section {
 
 	.big-image {
 		float: right;
+	}
+
+	.invites {
+		margin-top: 40px;
+		font-family: @font-family-serif;
+		text-transform: uppercase;
+		.clearfix();
+
+		h3 {
+
+			font-size: 38px;
+			color: #000;
+			font-weight: bold;
+
+		}
+
+		.invitation-card {
+			background: #97d4d9;
+			float: left;
+			width: 45%;
+			margin-right: 2.5%;
+			padding: 20px;
+			position: relative;
+
+			color: #fff;
+			text-shadow: 0 2px #77a7ab;
+			font-weight: bold;
+
+			img {
+				float: left;
+				margin-right: 10px;
+			}
+
+			h4 {
+				font-size: 27px;
+				margin-bottom: 15px;
+			}
+
+			.status {
+
+				position: absolute;
+				display: none;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0, 0.8);
+				color: #fff;
+				z-index: 100;
+				text-align: center;
+				text-shadow: none;
+				font-size: 27px;
+
+				padding-top: 24px;
+
+				&.replied {
+					display: block;
+				}
+
+			}
+		}
 	}
 
 }

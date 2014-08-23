@@ -15,14 +15,42 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome( $invite_id ) {
+	public function home( $invite_id ) {
+
+		$invites = [];
 
 		if( $invite_id ) {
-			$invite = Invite::find( Crypt::decrypt($invite_id) );
+			//$invite = Invite::find( Crypt::decrypt($invite_id) );
+			$invite = Invite::find( $invite_id );
+
+			if( $invite->group ) {
+				$invites = $invite->group->invites;
+			} else {
+				$invites = [ $invite ];
+			}
 		}
 
+		return View::make('hello')->with( 'invites', $invites );
 
-		return View::make('hello')->with('invite');
+	}
+
+	public function confirmInvitation( $id ) {
+
+		$invitation = Invite::find($id);
+
+		$invitation->declined_on = null;
+		$invitation->confirmed_on = new DateTime();
+		$invitation->save();
+
+	}
+
+	public function declineInvitation( $id ) {
+
+		$invitation = Invite::find($id);
+
+		$invitation->declined_on = new DateTime();
+		$invitation->confirmed_on = null;
+		$invitation->save();
 
 	}
 

@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/{any?}', 'HomeController@home');
+
+Route::post('/invitacion/{id}/confirmar', 'HomeController@confirmInvitation');
+Route::post('/invitacion/{id}/declinar', 'HomeController@declineInvitation');
 
 Route::group(array('before' => 'auth.basic'), function() {
 	Route::get('/invitados', 'AdminController@showAdmin');

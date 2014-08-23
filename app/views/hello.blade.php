@@ -26,7 +26,7 @@
 			@include('location')
 			@include('party')
 			@include('gift')
-			@include('rsvp')
+			@include('rsvp', array('invites' => $invites ))
 		</div>
 
 

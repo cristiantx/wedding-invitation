@@ -5,7 +5,7 @@ class HostsTableSeeder extends Seeder {
 	public function run()
 	{
 
-		DB::table('hosts')->truncate();
+		//DB::table('hosts')->truncate();
 
 		Host::create([
 				'email' => 'cristian.conedera@gmail.com',

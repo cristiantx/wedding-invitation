@@ -4,6 +4,38 @@ $(document).ready(function() {
 	//$(".navigation-container").headroom();
 	window.scrollReveal = new scrollReveal();
 
+	$('.confirm').click(function ( e ) {
+
+		e.preventDefault();
+		var $card = $(e.target).parents('.invitation-card');
+		var invite_id = $card.data('invitation-id');
+
+		$.post('/invitacion/' + invite_id + '/confirmar', null, function( response ) {
+			$card.find('.status').addClass('replied').find('.status-msg').text('Asistirá');
+		});
+
+	});
+
+	$('.decline').click(function ( e ) {
+
+		e.preventDefault();
+		var $card = $(e.target).parents('.invitation-card');
+		var invite_id = $card.data('invitation-id');
+
+		$.post('/invitacion/' + invite_id + '/declinar', null, function( response ) {
+			$card.find('.status').addClass('replied').find('.status-msg').text('No Asistirá');
+		});
+
+	});
+
+	$('.change-rsvp').click( function ( e ) {
+		e.preventDefault();
+
+		var $card = $(e.target).parents('.invitation-card');
+		$card.find('.status').removeClass('replied');
+
+	});
+
 });
 	 google.maps.event.addDomListener(window, 'load', init);
 	var map;
@@ -60,7 +92,7 @@ $(document).ready(function() {
 		var mapElement = document.getElementById('place-map');
 		var map = new google.maps.Map(mapElement, mapOptions);
 		var locations = [
-['Los Laureles', 'Manuel Julian Medel 1386', 'undefined', 'undefined', 'undefined', -34.8377349, -58.47819419999999]
+['Los Laureles', 'Manuel Julian Medel 1386 <br> Monte Grande <br> Buenos Aires', 'undefined', 'undefined', 'undefined', -34.8377349, -58.47819419999999]
 		];
 		for (i = 0; i < locations.length; i++) {
 			if (locations[i][1] =='undefined'){ description ='';} else { description = locations[i][1];}
