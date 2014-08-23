@@ -18,7 +18,7 @@ class AdminController extends BaseController {
 
 		foreach( $invites as $invite ) {
 
-			if( (!$invite['id'] && $invite['remove'] == 'true') || ( $invite['nombre'] == '' || $invite['email'] == '' ) ) continue;
+			if( (!$invite['id'] && $invite['remove'] == 'true') || ( $invite['nombre'] == '' ) ) continue;
 
 			$inviteObj = null;
 
