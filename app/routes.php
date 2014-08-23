@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/{any?}', 'HomeController@home');
+Route::get('/', 'HomeController@home');
+Route::get('/ver/{any}', 'HomeController@home');
 
 Route::post('/invitacion/{id}/confirmar', 'HomeController@confirmInvitation');
 Route::post('/invitacion/{id}/declinar', 'HomeController@declineInvitation');
@@ -21,3 +22,4 @@ Route::group(array('before' => 'auth.basic'), function() {
 	Route::post('/invitados', 'AdminController@saveInvites');
 	Route::post('/invitados/grupo', 'GroupsController@store');
 });
+
