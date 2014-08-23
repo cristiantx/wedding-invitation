@@ -47,7 +47,8 @@ module.exports = function (grunt) {
 					]
 				},
 				files: {
-					'<%= config.assets %>/styles/styles.css': '<%= config.assets %>/styles/less/styles.less'
+					'<%= config.assets %>/styles/styles.css': '<%= config.assets %>/styles/less/styles.less',
+					'<%= config.assets %>/styles/admin.css': '<%= config.assets %>/styles/less/admin.less'
 				}
 			},
 			email: {
@@ -73,7 +74,8 @@ module.exports = function (grunt) {
 					]
 				},
 				files: {
-					'<%= config.assets %>/styles/survey.css': '<%= config.assets %>/styles/less/styles.less'
+					'<%= config.assets %>/styles/styles.css': '<%= config.assets %>/styles/less/styles.less',
+					'<%= config.assets %>/styles/admin.css': '<%= config.assets %>/styles/less/admin.less'
 				}
 			}
 		},
@@ -91,6 +93,13 @@ module.exports = function (grunt) {
 					'public/assets/scripts/script.js'
 				],
 				dest: 'public/assets/scripts/script.min.js',
+			},
+			backend: {
+				src: [
+					'public/vendor/jquery/dist/jquery.js',
+					'public/assets/scripts/invitados.js'
+				],
+				dest: 'public/assets/scripts/invitados.min.js',
 			}
 		},
 		inlinecss: {
@@ -124,7 +133,10 @@ module.exports = function (grunt) {
 			},
 			scripts: {
 				files: [
-					'<%= config.assets %>/scripts/script.js'],
+					'<%= config.assets %>/scripts/script.js',
+					'<%= config.assets %>/scripts/invitados.js'
+					],
+
 				tasks: ['concat']
 			}
 		},
