@@ -3,7 +3,7 @@
 		<div class="content">
 			<div class="info">
 				<h2>El regalo</h2>
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim</p>
+				<p>Nuestra Luna de miel se aproxima, y pensamos que si alguno desea hacernos un regalo, este podria ser ayudarnos a viajar al lugar que soñamos, por eso decidimos compartirles nuestro numero de Cuenta Bancaria, para que cada uno nos aporte su granito de arena. Desde ya que les agradecemos muchisimo.</p>
 			</div>
 		</div>
 	</div>
