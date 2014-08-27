@@ -7,7 +7,7 @@ class AdminController extends BaseController {
 
 		$hosts = Host::lists('first_name', 'id');
 		$groups = array('0' => 'Sin Grupo') + Group::lists('id', 'id') + array('new' => 'Nuevo Grupo');
-		$invitations = Invite::orderBy('last_name', 'ASC')->get();
+		$invitations = Invite::orderBy('group_id', 'ASC')->orderBy('last_name', 'ASC')->get();
 		return View::make('admin.index')->with('hosts', $hosts)->with('groups', $groups)->with('invitations', $invitations);
 
 	}
