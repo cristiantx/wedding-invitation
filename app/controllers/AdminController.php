@@ -8,7 +8,18 @@ class AdminController extends BaseController {
 		$hosts = Host::lists('first_name', 'id');
 		$groups = array('0' => 'Sin Grupo') + Group::lists('id', 'id') + array('new' => 'Nuevo Grupo');
 		$invitations = Invite::orderBy('group_id', 'ASC')->orderBy('last_name', 'ASC')->get();
-		return View::make('admin.index')->with('hosts', $hosts)->with('groups', $groups)->with('invitations', $invitations);
+
+		$totalAle = Invite::where('host_id', 2 )->count();
+		$totalCris = Invite::where('host_id', 1)->count();
+		$totalGlobal = Invite::count();
+
+		return View::make('admin.index')
+					->with('hosts', $hosts)
+					->with('groups', $groups)
+					->with('totalAle', $totalAle)
+					->with('totalCris', $totalCris)
+					->with('totalGlobal', $totalGlobal)
+					->with('invitations', $invitations);
 
 	}
 

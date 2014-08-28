@@ -2,6 +2,13 @@
 
 @section('content')
 <h1>Lista de Invitados</h1>
+<div class="totals">
+	<ul>
+		<li>Ale: {{ $totalAle }}</li>
+		<li>Cristian: {{ $totalCris }}</li>
+		<li>Total: {{ $totalGlobal }}</li>
+	</ul>
+</div>
 {{ Form::open(array('url' => 'invitados-admin/invitados')) }}
 <table class="table table-hover">
 	<thead>
