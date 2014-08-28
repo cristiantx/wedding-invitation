@@ -109,8 +109,7 @@ module.exports = function (grunt) {
 					url: 'file://<%= config.root %>/public/'
 				},
 				files: {
-					'<%= config.app %>/views/emails/invitation/intro.blade.php': '<%= config.app %>/views/emails/invitation/intro_base.blade.php',
-					'<%= config.app %>/views/emails/invitation/results.blade.php': '<%= config.app %>/views/emails/invitation/results_base.blade.php'
+					'<%= config.app %>/views/emails/invitation.blade.php': '<%= config.app %>/views/emails/_invitation.blade.php'
 				}
 			}
 		},
@@ -138,6 +137,12 @@ module.exports = function (grunt) {
 					],
 
 				tasks: ['concat']
+			},
+			email: {
+				files: [
+					'<%= config.app %>/views/emails/_invitation.blade.php'
+				],
+				tasks: ['inlinecss']
 			}
 		},
 
@@ -203,8 +208,8 @@ module.exports = function (grunt) {
 		grunt.task.run([
 			'less:development',
 			'less:email',
-			'concat'
-			//'inlinecss'
+			'concat',
+			'inlinecss'
 		]);
 
 

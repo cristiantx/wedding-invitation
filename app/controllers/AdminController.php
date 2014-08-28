@@ -1,5 +1,7 @@
 <?php
 
+use Swift_SmtpTransport as SmtpTransport;
+
 class AdminController extends BaseController {
 
 
@@ -72,6 +74,29 @@ class AdminController extends BaseController {
 		}
 
 		return Response::json( $invites );
+
+	}
+
+	public function sendInvitations() {
+
+		$transport = SmtpTransport::newInstance('smtp.gmail.com', 25);
+        $transport->setEncryption('tls');
+        $transport->setUsername('cristian.conedera@gmail.com');
+        $transport->setPassword('Ntx32640a');
+        $swift = new Swift_Mailer($transport);
+
+        Mail::setSwiftMailer($swift);
+
+        $data = array(
+        		'images' => [ asset('assets/images/aleycris.png') ]
+        	);
+
+		Mail::queue('emails.invitation', $data, function($message) {
+			$message->from('cristian.conedera@gmail.com', 'Cristian Conedera')
+					->to('cristian.conedera@bothmedia.com', 'Cristian Conedera')
+					->subject('Fuiste invitado al Casamiento de Alejandra y Cristian!');
+
+		});
 
 	}
 
