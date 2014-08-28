@@ -5,7 +5,7 @@ class AdminController extends BaseController {
 
 	public function showAdmin() {
 
-		$hosts = Host::lists('first_name', 'id');
+		$hosts = Host::orderBy('id', 'DESC')->lists('first_name', 'id');
 		$groups = array('0' => 'Sin Grupo') + Group::lists('id', 'id') + array('new' => 'Nuevo Grupo');
 		$invitations = Invite::orderBy('group_id', 'ASC')->orderBy('last_name', 'ASC')->get();
 
