@@ -4,6 +4,7 @@
 /node_modules
 /public/assets/styles/*.css
 /public/assets/scripts/templates/*.js
+/public/assets/scripts/*.min.js
 /public/vendor/*
 composer.phar
 .env.local.php
