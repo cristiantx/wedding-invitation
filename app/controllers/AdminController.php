@@ -27,16 +27,13 @@ class AdminController extends BaseController {
 
 		$invites = Input::get('data');
 
-var_dump( $invites );
-
 		foreach( $invites as $invite ) {
 
+			echo "Invite ID:" . $invite['id'] . "\n";
 
 			if( (!$invite['id'] && $invite['remove'] == 'true') || ( $invite['nombre'] == '' ) ) continue;
 
 			$inviteObj = null;
-
-
 
 			if( $invite['id'] ) {
 
