@@ -44,7 +44,7 @@ class AdminController extends BaseController {
 					}
 
 				} catch( Exception $e ) {
-
+					continue;
 				}
 
 			}
