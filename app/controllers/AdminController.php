@@ -54,7 +54,7 @@ class AdminController extends BaseController {
 			$inviteObj->email = $invite['email'];
 
 
-			if( isset($invite['group_id']) ) {
+			if( isset($invite['group_id']) && $invite['group_id'] ) {
 				$group = Group::find($invite['group_id']);
 				$inviteObj->group()->associate( $group );
 			}
