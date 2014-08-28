@@ -33,6 +33,8 @@ class AdminController extends BaseController {
 
 			$inviteObj = null;
 
+			var_dump( $invite );
+
 			if( $invite['id'] ) {
 
 				$inviteObj = Invite::find( $invite['id'] );
