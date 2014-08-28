@@ -35,15 +35,18 @@ function onSaveInvites( e ) {
 
 		var invite = {};
 		var row = $(this);
-		invite.id = parseInt(row.find('[name="id"]').val()) || null;
-		invite.remove = (row.find('[name="remove"]').val()!='false');
-		invite.nombre = row.find('[name="nombre"]').val();
-		invite.apellido = row.find('[name="apellido"]').val();
-		invite.email = row.find('[name="email"]').val();
-		invite.host_id = parseInt(row.find('[name="host"]').val());
-		invite.group_id = parseInt(row.find('[name="group"]').val());
+		if( row.val() != 'false' ) {
 
-		invites.push( invite );
+			invite.id = parseInt(row.find('[name="id"]').val()) || null;
+			invite.remove = (row.find('[name="remove"]').val()!='false');
+			invite.nombre = row.find('[name="nombre"]').val();
+			invite.apellido = row.find('[name="apellido"]').val();
+			invite.email = row.find('[name="email"]').val();
+			invite.host_id = parseInt(row.find('[name="host"]').val());
+			invite.group_id = parseInt(row.find('[name="group"]').val());
+
+			invites.push( invite );
+		}
 
 	});
 
