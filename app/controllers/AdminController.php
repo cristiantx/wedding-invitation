@@ -29,11 +29,13 @@ class AdminController extends BaseController {
 
 		foreach( $invites as $invite ) {
 
+			var_dump( $invite );
+
 			if( (!$invite['id'] && $invite['remove'] == 'true') || ( $invite['nombre'] == '' ) ) continue;
 
 			$inviteObj = null;
 
-			var_dump( $invite );
+
 
 			if( $invite['id'] ) {
 
