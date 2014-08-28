@@ -26,11 +26,8 @@ class AdminController extends BaseController {
 	public function saveInvites() {
 
 		$invites = Input::get('data');
-		echo "hola";
 
 		foreach( $invites as $invite ) {
-
-			echo "Invite ID:" . $invite['id'] . "\n";
 
 			if( (!$invite['id'] && $invite['remove'] == 'true') || ( $invite['nombre'] == '' ) ) continue;
 
@@ -38,12 +35,16 @@ class AdminController extends BaseController {
 
 			if( $invite['id'] ) {
 
-				$inviteObj = Invite::find( $invite['id'] );
+				try {
+					$inviteObj = Invite::findOrFail( $invite['id'] );
 
-				if( $invite['remove'] == 'true' ) {
-					echo "borrando" . $invite['id'] . "\n";
-					$inviteObj->delete();
-					continue;
+					if( $invite['remove'] == 'true' ) {
+						$inviteObj->delete();
+						continue;
+					}
+
+				} catch( Exception $e ) {
+
 				}
 
 			}
