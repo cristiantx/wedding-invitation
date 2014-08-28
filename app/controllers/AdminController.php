@@ -26,6 +26,7 @@ class AdminController extends BaseController {
 	public function saveInvites() {
 
 		$invites = Input::get('data');
+		echo "hola";
 
 		foreach( $invites as $invite ) {
 
@@ -68,6 +69,8 @@ class AdminController extends BaseController {
 			$inviteObj->save();
 
 		}
+
+		return Response::json( $invites );
 
 	}
 
