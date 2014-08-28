@@ -2,6 +2,8 @@
 /vendor
 /build
 /node_modules
+/app/views/emails/*.php
+!/app/views/emails/_*
 /public/assets/styles/*.css
 /public/assets/scripts/templates/*.js
 /public/assets/scripts/*.min.js
