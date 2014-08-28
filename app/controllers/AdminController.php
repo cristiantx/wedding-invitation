@@ -38,6 +38,7 @@ class AdminController extends BaseController {
 				$inviteObj = Invite::find( $invite['id'] );
 
 				if( $invite['remove'] == 'true' ) {
+					echo "borrando" . $invite['id'] . "\n";
 					$inviteObj->delete();
 					continue;
 				}
