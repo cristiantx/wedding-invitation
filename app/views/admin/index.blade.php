@@ -24,7 +24,7 @@
 	<tbody>
 		@foreach( $invitations as $invite )
 		<tr class="invitation">
-			<td><input type="hidden" name="id" value="{{ $invite->id }}"><input type="hidden" name="remove" value="false"><input class="form-control" placeholder="Nombre" name="nombre" value="{{ $invite->first_name }}"></td>
+			<td><input type="hidden" name="id" value="{{ $invite->id }}"><input type="hidden" name="id" value="{{ $invite->id }}"><input type="hidden" name="changed" value="false"><input class="form-control" placeholder="Nombre" name="nombre" value="{{ $invite->first_name }}"></td>
 			<td><input class="form-control" name="apellido" placeholder="Apellido" value="{{ $invite->last_name }}"></td>
 			<td><input class="form-control" name="email" placeholder="Email" value="{{ $invite->email }}"></td>
 			<td>
@@ -35,7 +35,7 @@
 		</tr>
 		@endforeach
 		<tr class="invitation empty-template">
-			<td><input type="hidden" name="id" value=""><input type="hidden" name="remove" value="false"><input class="form-control" placeholder="Nombre" name="nombre"></td>
+			<td><input type="hidden" name="id" value=""><input type="hidden" name="changed" value="true"><input type="hidden" name="remove" value="false"><input class="form-control" placeholder="Nombre" name="nombre"></td>
 			<td><input class="form-control" name="apellido" placeholder="Apellido"></td>
 			<td><input class="form-control" name="email" placeholder="Email"></td>
 			<td>

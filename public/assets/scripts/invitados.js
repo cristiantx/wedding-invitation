@@ -10,15 +10,21 @@ $(document).ready(function() {
 		var toInsert = empty.clone();
 		toInsert.find('.group-select').on('change', onGroupChange );
 		toInsert.find('.remove-invite').click( onRemoveClick );
+		toInsert.find('input').click( changedInput );
 		$('table tbody').append( toInsert );
 
 	});
 
 	$('.remove-invite').click( onRemoveClick );
 	$('.save-invites').click( onSaveInvites );
+	$('tr input').on('change', changedInput );
 
 
 });
+
+function changedInput( e ) {
+	setChanged( $(this) );
+}
 
 function onSaveInvites( e ) {
 
@@ -49,14 +55,24 @@ function onSaveInvites( e ) {
 
 function onRemoveClick( e ) {
 	e.preventDefault();
+
+	setChanged( $(this) );
+
 	$parent = $(this).parents('tr');
 	$parent.find('[name="remove"]').val('true');
 	$parent.hide();
 }
 
+function setChanged( $el ) {
+	$parent = $el.parents('tr');
+	$parent.find('[name="changed"]').val('true')
+}
+
 function onGroupChange( e ) {
 
 	$el = $(this);
+
+	setChanged( $el );
 
 	if( $el.find(':selected').val() == 'new' ) {
 
