@@ -53,10 +53,10 @@ $(document).ready(function() {
 			disableDoubleClickZoom: true,
 			mapTypeControl: false,
 			scaleControl: true,
-			scrollwheel: true,
+			scrollwheel: false,
 			panControl: true,
 			streetViewControl: false,
-			draggable : true,
+			draggable : false,
 			overviewMapControl: false,
 			overviewMapControlOptions: {
 				opened: false,
