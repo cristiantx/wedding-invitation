@@ -119,7 +119,7 @@ class AdminController extends BaseController {
 					'url' => url('/ver/' . $invite->id )
 				);
 
-			$this->setHostAccount( $invite );
+			//$this->setHostAccount( $invite );
 
 			Mail::later( 10, 'emails.invitation', $data, function($message)  use ( $invite ) {
 				$message->from( $invite->host->email , $invite->host->first_name . ' ' . $invite->host->last_name )
