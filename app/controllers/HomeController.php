@@ -22,6 +22,8 @@ class HomeController extends BaseController {
 		if( $invite_id ) {
 			//$invite = Invite::find( Crypt::decrypt($invite_id) );
 			$invite = Invite::find( $invite_id );
+			$invite->seen_at = new DateTime();
+			$invite->save();
 
 			if( $invite->group ) {
 				$invites = $invite->group->invites;

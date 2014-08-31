@@ -10,7 +10,7 @@
 	</ul>
 </div>
 {{ Form::open(array('url' => 'invitados-admin/invitados')) }}
-<table class="table table-hover">
+<table class="table table-hover invitados-crud">
 	<thead>
 		<tr>
 			<th>Nombre</th>

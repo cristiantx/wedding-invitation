@@ -60,10 +60,11 @@ class AdminController extends BaseController {
 			$inviteObj->last_name = $invite['apellido'];
 			$inviteObj->email = $invite['email'];
 
-
-			if( isset($invite['group_id']) && $invite['group_id'] ) {
+			if( isset($invite['group_id']) && $invite['group_id'] != 0 ) {
 				$group = Group::find($invite['group_id']);
 				$inviteObj->group()->associate( $group );
+			} elseif( isset($invite['group_id']) && $invite['group_id'] == 0 ) {
+				$inviteObj->group()->dissociate();
 			}
 
 			$host = Host::find($invite['host_id']);
@@ -77,10 +78,34 @@ class AdminController extends BaseController {
 
 	}
 
+	public function listInvitations() {
+
+		$hosts = Host::orderBy('id', 'DESC')->lists('first_name', 'id');
+		$groups = array('0' => 'Sin Grupo') + Group::lists('id', 'id') + array('new' => 'Nuevo Grupo');
+		$invitations = Invite::where('email','!=', '')->orderBy('group_id', 'ASC')->orderBy('last_name', 'ASC')->get();
+
+		$totalAle = Invite::where('host_id', 2 )->count();
+		$totalCris = Invite::where('host_id', 1)->count();
+		$totalGlobal = Invite::count();
+
+		return View::make('admin.sender')
+					->with('hosts', $hosts)
+					->with('groups', $groups)
+					->with('totalAle', $totalAle)
+					->with('totalCris', $totalCris)
+					->with('totalGlobal', $totalGlobal)
+					->with('invitations', $invitations);
+
+	}
+
 	public function dispatchInvitations() {
 
-		$invitations = Invite::where('email', '!=', '')->get();
+		$selected = Input::get('selected');
+
+		$invitations = Invite::where('email', '!=', '')->whereIn( 'id', $selected )->get();
 		$this->sendInvitations( $invitations );
+
+		return Redirect::to('/invitaciones');
 
 	}
 

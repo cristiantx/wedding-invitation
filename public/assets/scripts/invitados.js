@@ -1,23 +1,48 @@
 $(document).ready(function() {
 
-	$('.group-select').on('change', onGroupChange );
 
-	window.empty = $('.empty-template').clone().removeClass('empty-template');
+	if( $('.invitados-crud').length > 0 ) {
 
-	$('.add-invite').click(function(e) {
+		$('.group-select').on('change', onGroupChange );
 
-		e.preventDefault();
-		var toInsert = empty.clone();
-		toInsert.find('.group-select').on('change', onGroupChange );
-		toInsert.find('.remove-invite').click( onRemoveClick );
-		toInsert.find('input').click( changedInput );
-		$('table tbody').append( toInsert );
+		window.empty = $('.empty-template').clone().removeClass('empty-template');
 
-	});
+		$('.add-invite').click(function(e) {
 
-	$('.remove-invite').click( onRemoveClick );
-	$('.save-invites').click( onSaveInvites );
-	$('tr input').on('change', changedInput );
+			e.preventDefault();
+			var toInsert = empty.clone();
+			toInsert.find('.group-select').on('change', onGroupChange );
+			toInsert.find('.remove-invite').click( onRemoveClick );
+			toInsert.find('input').click( changedInput );
+			$('table tbody').append( toInsert );
+
+		});
+
+		$('.remove-invite').click( onRemoveClick );
+		$('.save-invites').click( onSaveInvites );
+		$('tr input').on('change', changedInput );
+
+	} else {
+
+		$('.select-all').change(function(e) {
+
+			var checked = $(this).is(':checked');
+
+			$('.invitaciones-list tbody input[type="checkbox"]').each(function() {
+				$(this).prop('checked', checked );
+			});
+
+		});
+
+		$('.invitaciones-list tbody input[type="checkbox"]').change(function () {
+			$('.select-all').prop('checked', false);
+		});
+
+		$('form').submit(function() {
+			$('.send-invites').prop('disabled', true);
+		});
+
+	}
 
 
 });

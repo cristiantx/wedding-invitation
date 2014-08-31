@@ -11,7 +11,7 @@
 		</head>
 
 		<body>
-				<div class="container">
+				<div class="container-fluid">
 
 					<div class="navbar navbar-default" role="navigation">
 						<div class="container-fluid">
@@ -26,8 +26,8 @@
 							</div>
 							<div class="navbar-collapse collapse">
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="#">Invitados</a></li>
-									<li><a href="#">Invitaciones</a></li>
+									<li><a href="/invitados">Invitados</a></li>
+									<li><a href="/invitaciones">Invitaciones</a></li>
 								</ul>
 							</div><!--/.nav-collapse -->
 						</div><!--/.container-fluid -->
