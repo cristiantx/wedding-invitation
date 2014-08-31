@@ -60,7 +60,7 @@ function onSaveInvites( e ) {
 
 		var invite = {};
 		var row = $(this);
-		if( row.find('changed').val() != 'false' ) {
+		if( row.find('.changed').val() != 'false' ) {
 
 			invite.id = parseInt(row.find('[name="id"]').val()) || null;
 			invite.remove = (row.find('[name="remove"]').val()!='false');
