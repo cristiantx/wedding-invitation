@@ -101,7 +101,6 @@ class AdminController extends BaseController {
 	public function dispatchInvitations() {
 
 		$selected = Input::get('selected');
-
 		$invitations = Invite::where('email', '!=', '')->whereIn( 'id', $selected )->get();
 		$this->sendInvitations( $invitations );
 
