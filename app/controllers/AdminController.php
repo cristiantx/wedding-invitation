@@ -77,26 +77,57 @@ class AdminController extends BaseController {
 
 	}
 
-	public function sendInvitations() {
+	public function dispatchInvitations() {
+
+		$invitations = Invite::where('email', '!=', '')->get();
+		$this->sendInvitations( $invitations );
+
+	}
+
+	private function sendInvitations( $invitations ) {
+
+		foreach( $invitations as $invite ) {
+
+			if( !$invite->email || $invite->email == '' ) continue;
+
+			$data = array(
+					'images' => [ asset('assets/images/aleycris.png') ],
+					'url' => url('/ver/' . $invite->id )
+				);
+
+			$this->setHostAccount( $invite );
+
+			Mail::queue('emails.invitation', $data, function($message)  use ( $invite ) {
+				$message->from( $invite->host->email , $invite->host->first_name . ' ' . $invite->host->last_name )
+						->to( $invite->email, $invite->first_name . ' ' . $invite->last_name )
+						->subject('Fuiste invitado al Casamiento de Alejandra y Cristian!');
+			});
+
+			$invite->invited_on = new DateTime();
+			$invite->save();
+
+		}
+
+	}
+
+	private function setHostAccount( $invitation ) {
+
+		if( $invitation->host->id == 1 ) {
+			$user = 'cristian.conedera@gmail.com';
+			$password = $_ENV['CRIS_P'];
+		}
+		else {
+			$user = 'alejandramocoroa@gmail.com';
+			$password = $_ENV['ALE_P'];
+		}
 
 		$transport = SmtpTransport::newInstance('smtp.gmail.com', 25);
-        $transport->setEncryption('tls');
-        $transport->setUsername('cristian.conedera@gmail.com');
-        $transport->setPassword('Ntx32640a');
-        $swift = new Swift_Mailer($transport);
+		$transport->setEncryption('tls');
+		$transport->setUsername( $user );
+		$transport->setPassword( $password );
+		$swift = new Swift_Mailer($transport);
 
-        Mail::setSwiftMailer($swift);
-
-        $data = array(
-        		'images' => [ asset('assets/images/aleycris.png') ]
-        	);
-
-		Mail::queue('emails.invitation', $data, function($message) {
-			$message->from('cristian.conedera@gmail.com', 'Cristian Conedera')
-					->to('cristian.conedera@bothmedia.com', 'Cristian Conedera')
-					->subject('Fuiste invitado al Casamiento de Alejandra y Cristian!');
-
-		});
+		Mail::setSwiftMailer($swift);
 
 	}
 

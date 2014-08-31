@@ -17,7 +17,7 @@
 				<ul>
 					<li><a href="#place">El lugar</a></li>
 					<li><a href="#party">La fiesta</a></li>
-					<li>{{ HTML::image('assets/images/anillos.png'); }}</li>
+					<li class="logo">{{ HTML::image('assets/images/anillos.png'); }}</li>
 					<li><a href="#gift">El regalo</a></li>
 					<li><a href="#rsvp">Asistencia</a></li>
 				</ul>

@@ -1,6 +1,7 @@
 html, body, #skrollr-body {
 	width:100%;
 	height:100%;
+	overflow-x: hidden;
 }
 
 section {
@@ -10,6 +11,12 @@ section {
 	background:transparent center no-repeat;
 	background-size:cover;
 	.clearfix();
+
+	@media (max-width: @screen-sm-max) {
+
+		min-height: 0;
+
+	}
 }
 
 .add-sckollr {
@@ -29,6 +36,12 @@ section {
 	font-family: @font-featured;
 	font-size: 126px;
 	text-transform: uppercase;
+
+	@media (max-width: @screen-sm-max) {
+
+		font-size: 65px;
+
+	}
 }
 
 .navigation-container {
@@ -85,6 +98,18 @@ section {
 			padding: 3em 0 0;
 		}
 	}
+
+	@media (max-width: @screen-sm-max) {
+
+		ul li {
+			display: none;
+
+			&.logo {
+				display: inline-block;
+			}
+		}
+
+	}
 }
 
 .welcome {
@@ -105,7 +130,7 @@ section {
 
 			.hide-text();
 			display: inline-block;
-			background: url('../images/aleycris.png');
+			background: url('../images/aleycris.png') no-repeat center center;
 			width: 552px;
 			height: 83px;
 			margin: 30px 0 20px;
@@ -119,12 +144,39 @@ section {
 
 		.date-ribbon {
 			color: @body-bg;
-			background: url('../images/ribbon.png');
+			background: url('../images/ribbon.png') no-repeat center center;
 			width: 553px;
 			height: 79px;
 			font-family: @font-family-serif;
 			line-height: 79px;
 			margin: 20px 0;
+		}
+
+		@media (max-width: @screen-sm-max) {
+
+			width: 100%;
+			.translate(0,0);
+			padding-bottom: 30px;
+			font-size: 17px;
+
+			.names {
+				width: 100%;
+				height: 83px;
+				background-size: contain;
+
+			}
+
+			h2 {
+				font-size: 65px;
+			}
+
+			.date-ribbon {
+				width: 100%;
+				background-size: contain;
+				height: 50px;
+				line-height: 50px;
+			}
+
 		}
 	}
 }
@@ -150,6 +202,7 @@ section {
 
 		.info {
 			padding: 20px;
+			text-align: justify;
 			font-size: 23px;
 
 			width: 38%;
@@ -159,13 +212,35 @@ section {
 		.google-map-canvas {
 			width: 62%;
 			float: left;
-			height: 500px;
+			height: 540px;
 
 			& > div {
 				width: 100%;
 				height: 100%;
 			}
 		}
+	}
+
+	@media (max-width: @screen-sm-max) {
+
+		height: auto;
+
+		.content {
+			width: 100%;
+			position: static;
+			.translate(0,0);
+
+			.info {
+				width: 100%;
+				float: none;
+			}
+
+			.google-map-canvas {
+				width: 100%;
+				float: none;
+			}
+		}
+
 	}
 }
 
@@ -176,6 +251,7 @@ section {
 	text-transform: uppercase;
 	font-size: 24px;
 	padding-top: 60px;
+	position: relative;
 
 	h2 {
 		.featured-title();
@@ -184,6 +260,25 @@ section {
 	}
 
 	@feature-width: 350px;
+
+	.photos-frame {
+		position: absolute;
+		top: 265px;
+		left: 50px;
+		color: #fff;
+		.rotate(-4deg);
+		text-transform: none;
+		background: #e84748;
+		font-size: 18px;
+
+		width: 450px;
+		padding: 15px;
+
+		h3 {
+			font-size: 20px;
+			font-family: @font-family-serif;
+		}
+	}
 
 	.features-wrapper {
 		width: @feature-width;
@@ -249,6 +344,49 @@ section {
 		}
 	}
 
+	@media (max-width: @screen-sm-max) {
+
+		.photos-frame {
+			.rotate(0);
+			position: static;
+			width: 100%;
+		}
+
+
+		.features-wrapper {
+			width: 100%;
+			.translate(0,0);
+
+			ul li, ul li:nth-child(odd) {
+				margin-left: 0 !important;
+				font-size: 18px;
+				text-align: left;
+				width: 100%;
+
+				img {
+					float: left;
+					width: 60px;
+					height: 60px;
+					margin-right: 20px;
+				}
+
+				&.center {
+					margin-left: -63px !important;
+					img {
+						width: auto;
+						height: auto;
+					}
+				}
+
+				&.wide {
+					width: 95%;
+				}
+			}
+		}
+
+
+	}
+
 
 }
 
@@ -266,6 +404,20 @@ section {
 
 		p {
 			font-size: 23px;
+		}
+
+		.bank-card {
+			padding: 20px;
+			margin-top: 30px;
+			background: rgba(255,255,255,0.4);
+			border-radius: 5px;
+			font-size: 20px;
+		}
+	}
+
+	@media (max-width: @screen-sm-max) {
+		.content {
+			width: 100%;
 		}
 	}
 }
@@ -322,6 +474,7 @@ section {
 			float: left;
 			width: 45%;
 			margin-right: 2.5%;
+			margin-bottom: 20px;
 			padding: 20px;
 			position: relative;
 
@@ -360,6 +513,26 @@ section {
 					display: block;
 				}
 
+			}
+		}
+	}
+
+	@media (max-width: @screen-sm-max) {
+		.info {
+			width: 100%;
+		}
+
+		.big-image {
+			display: none;
+		}
+
+		.invites .invitation-card {
+			width: 100%;
+			float: none;
+			text-align: center;
+
+			.decline {
+				margin-top: 15px;
 			}
 		}
 	}

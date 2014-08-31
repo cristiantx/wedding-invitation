@@ -2,7 +2,10 @@ $(document).ready(function() {
 
 	$('a').smoothScroll({ speed: 500 });
 	//$(".navigation-container").headroom();
-	window.scrollReveal = new scrollReveal();
+	if( !isMobile() ) {
+		//window.scrollReveal = new scrollReveal();
+	}
+
 
 	$('.confirm').click(function ( e ) {
 
@@ -122,4 +125,20 @@ $(document).ready(function() {
 			iw.open(map,marker);
 		});
 	}
+}
+
+function isMobile() {
+ if( navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i)
+ ){
+    return true;
+  }
+ else {
+    return false;
+  }
 }

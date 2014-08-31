@@ -5,7 +5,7 @@
 			{{ HTML::image('assets/images/rsvp.png', 'RSVP', array('class' => 'big-image')) }}
 			<div class="info">
 				<h2>Asistencia</h2>
-				<p>Necesitamos que confirmen su asistencia con fecha limite el 08 de Octubre de 2014</p>
+				<p>Necesitamos que confirmen su asistencia con fecha limite el 25 de Octubre de 2014</p>
 				<p>Los esperamos para compartir este momento tan importante para nosotros. Lleno de emociones y alegría</p>
 			</div>
 			@if( $invites )
