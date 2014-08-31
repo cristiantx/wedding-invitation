@@ -221,6 +221,19 @@ section {
 		}
 	}
 
+	@media (max-width: @screen-md-max) {
+
+		min-height: 100%;
+		height: auto;
+		.content {
+			.clearfix();
+			width: 100%;
+			position: static;
+			.translate(0,0);
+		}
+
+	}
+
 	@media (max-width: @screen-sm-max) {
 
 		height: auto;
