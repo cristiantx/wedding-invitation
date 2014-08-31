@@ -121,7 +121,7 @@ class AdminController extends BaseController {
 
 			//$this->setHostAccount( $invite );
 
-			Mail::later( 10, 'emails.invitation', $data, function($message)  use ( $invite ) {
+			Mail::queue('emails.invitation', $data, function($message)  use ( $invite ) {
 				$message->from( $invite->host->email , $invite->host->first_name . ' ' . $invite->host->last_name )
 						->to( $invite->email, $invite->first_name . ' ' . $invite->last_name )
 						->subject('Fuiste invitado al Casamiento de Alejandra y Cristian!');
