@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	$('a').smoothScroll({ speed: 500 });
+	//$('.navigation-container a').smoothScroll({ speed: 500 });
 	//$(".navigation-container").headroom();
 	if( !isMobile() ) {
 		//window.scrollReveal = new scrollReveal();
