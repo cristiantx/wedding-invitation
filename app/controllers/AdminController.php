@@ -78,6 +78,22 @@ class AdminController extends BaseController {
 
 	}
 
+	public function showList() {
+
+		$hosts = Host::orderBy('id', 'DESC')->lists('first_name', 'id');
+		$groups = array('0' => 'Sin Grupo') + Group::lists('id', 'id') + array('new' => 'Nuevo Grupo');
+		$invitations = Invite::orderBy('group_id', 'ASC')->orderBy('last_name', 'ASC')->get();
+
+		$totalGlobal = Invite::whereNotNull('confirmed_on')->count();
+
+		return View::make('admin.confirmed')
+					->with('hosts', $hosts)
+					->with('groups', $groups)
+					->with('totalGlobal', $totalGlobal)
+					->with('invitations', $invitations);
+
+	}
+
 	public function listInvitations() {
 
 		$hosts = Host::orderBy('id', 'DESC')->lists('first_name', 'id');

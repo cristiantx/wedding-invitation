@@ -20,6 +20,7 @@ Route::post('/invitacion/{id}/declinar', 'HomeController@declineInvitation');
 Route::group(array('before' => 'auth.basic'), function() {
 	Route::get('/invitados', 'AdminController@showAdmin');
 	Route::post('/invitados', 'AdminController@saveInvites');
+	Route::get('/invitados/lista', 'AdminController@showList');
 	Route::post('/invitados/grupo', 'GroupsController@store');
 	Route::get('/invitaciones', 'AdminController@listInvitations');
 	Route::post('/invitaciones/enviar', 'AdminController@dispatchInvitations');
