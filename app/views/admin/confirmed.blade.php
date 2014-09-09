@@ -29,7 +29,13 @@
 			@else
 			<td><span class="label label-default">N/D</span></td>
 			@endif
-			<td><button class="btn btn-success resend-invite">Confirmar</button></td>
+			<td>
+				@if( $invite->declined_on || $invite->confirmed_on == null )
+				<button class="btn btn-success">Confirmar</button>
+				@elseif ( $invite->confirmed_on )
+				<button class="btn btn-warning">Declinar</button>
+				@endif
+			</td>
 		</tr>
 		@endforeach
 	</tbody>
