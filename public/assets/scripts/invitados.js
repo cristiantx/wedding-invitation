@@ -22,7 +22,35 @@ $(document).ready(function() {
 		$('.save-invites').click( onSaveInvites );
 		$('tr input').on('change', changedInput );
 
-	} else {
+	}
+	else if( $('.final-list').length > 0 ) {
+
+		$('.confirm-invite').click( function( e ) {
+
+			e.preventDefault();
+			$(this).button('loading');
+			$.post('/invitacion/' + $(this).data('invite-id') + '/confirmar', function() {
+
+				window.location.reload();
+
+			} );
+
+		} );
+
+		$('.decline-invite').click( function( e ) {
+
+			e.preventDefault();
+			$(this).button('loading');
+			$.post('/invitacion/' + $(this).data('invite-id') + '/declinar', function() {
+
+				window.location.reload();
+
+			} );
+
+		} );
+
+	}
+	else {
 
 		$('.select-all').change(function(e) {
 

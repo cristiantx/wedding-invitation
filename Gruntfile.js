@@ -97,6 +97,7 @@ module.exports = function (grunt) {
 			backend: {
 				src: [
 					'public/vendor/jquery/dist/jquery.js',
+					'public/vendor/bootstrap/dist/js/bootstrap.js',
 					'public/assets/scripts/invitados.js'
 				],
 				dest: 'public/assets/scripts/invitados.min.js',

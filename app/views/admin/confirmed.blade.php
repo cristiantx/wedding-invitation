@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>Lista de Invitados <small>{{ $totalGlobal }} Confirmados</small></h1>
-<table class="table table-hover">
+<table class="table table-hover final-list">
 	<thead>
 		<tr>
 			<th>Nombre</th>
@@ -31,9 +31,9 @@
 			@endif
 			<td>
 				@if( $invite->declined_on || $invite->confirmed_on == null )
-				<button class="btn btn-success">Confirmar</button>
+				<button class="btn btn-success confirm-invite" data-loading-text="Guardando..." data-invite-id="{{ $invite->id }}">Confirmar</button>
 				@elseif ( $invite->confirmed_on )
-				<button class="btn btn-warning">Declinar</button>
+				<button class="btn btn-warning decline-invite" data-loading-text="Guardando..." data-invite-id="{{ $invite->id }}">Declinar</button>
 				@endif
 			</td>
 		</tr>
