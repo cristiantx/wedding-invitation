@@ -19,17 +19,21 @@ class HomeController extends BaseController {
 
 		$invites = [];
 
-		if( $invite_id ) {
-			//$invite = Invite::find( Crypt::decrypt($invite_id) );
-			$invite = Invite::find( $invite_id );
-			$invite->seen_at = new DateTime();
-			$invite->save();
+		try {
+			if( $invite_id ) {
+				//$invite = Invite::find( Crypt::decrypt($invite_id) );
+				$invite = Invite::findOrFail( $invite_id );
+				$invite->seen_at = new DateTime();
+				$invite->save();
 
-			if( $invite->group ) {
-				$invites = $invite->group->invites;
-			} else {
-				$invites = [ $invite ];
+				if( $invite->group ) {
+					$invites = $invite->group->invites;
+				} else {
+					$invites = [ $invite ];
+				}
 			}
+		} catch ( Exception $e ) {
+			$invites = [];
 		}
 
 		return View::make('hello')->with( 'invites', $invites );
