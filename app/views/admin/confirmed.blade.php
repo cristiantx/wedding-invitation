@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('content')
-<h1>Lista de Invitados <small>{{ $totalGlobal }} Confirmados</small></h1>
+<h1>Lista de Invitados <small>{{ $totalGlobal }} Confirmados / {{ $totalNoResponse }} Sin Respuesta</small></h1>
 <table class="table table-hover final-list">
 	<thead>
 		<tr>

@@ -85,11 +85,13 @@ class AdminController extends BaseController {
 		$invitations = Invite::orderBy('group_id', 'ASC')->orderBy('last_name', 'ASC')->get();
 
 		$totalGlobal = Invite::whereNotNull('confirmed_on')->count();
+		$totalNoResponse = Invite::whereNull('confirmed_on')->whereNull('declined_on')->count();
 
 		return View::make('admin.confirmed')
 					->with('hosts', $hosts)
 					->with('groups', $groups)
 					->with('totalGlobal', $totalGlobal)
+					->with('totalNoResponse', $totalNoResponse)
 					->with('invitations', $invitations);
 
 	}
