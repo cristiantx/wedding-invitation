@@ -40,6 +40,48 @@ class HomeController extends BaseController {
 
 	}
 
+	public function getUpload( $invite_id = false ) {
+
+		if( !$invite_id ) return Response::redirect('/');
+
+
+		return View::make('fileupload')->with( 'invite_id', $invite_id );
+
+	}
+
+
+	public function postUpload( $invite_id = false ) {
+
+		if( !$invite_id ) return Response::redirect('/');
+
+
+		$input = Input::all();
+		$rules = array(
+		    'file' => 'image|max:30000',
+		);
+
+		$validation = Validator::make($input, $rules);
+
+		if ($validation->fails()) {
+			return Response::make($validation->errors->first(), 400);
+		}
+
+		$file = Input::file('file');
+
+        $extension = File::extension($file->getClientOriginalName());
+        $directory = public_path().'/uploads/'. $invite_id;
+        $filename = sha1(time().time()).".{$extension}";
+
+        $upload_success = Input::file('file')->move($directory, $filename);
+
+        if( $upload_success ) {
+        	return Response::json('success', 200);
+        } else {
+        	return Response::json('error', 400);
+        }
+
+	}
+
 	public function confirmInvitation( $id ) {
 
 		$invitation = Invite::find($id);
