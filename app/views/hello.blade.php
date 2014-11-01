@@ -26,7 +26,9 @@
 			@include('location')
 			@include('party')
 			@include('gift')
-			@include('rsvp', array('invites' => $invites ))
+			@if( count($invites) > 0 )
+				@include('rsvp', array('invites' => $invites ))
+			@endif
 		</div>
 
 

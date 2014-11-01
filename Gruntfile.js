@@ -107,7 +107,8 @@ module.exports = function (grunt) {
 					url: 'file://<%= config.root %>/public/'
 				},
 				files: {
-					'<%= config.app %>/views/emails/invitation.blade.php': '<%= config.app %>/views/emails/_invitation.blade.php'
+					'<%= config.app %>/views/emails/invitation.blade.php': '<%= config.app %>/views/emails/_invitation.blade.php',
+					'<%= config.app %>/views/emails/reminder.blade.php': '<%= config.app %>/views/emails/_reminder.blade.php'
 				}
 			}
 		},

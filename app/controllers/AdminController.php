@@ -118,9 +118,26 @@ class AdminController extends BaseController {
 
 	public function dispatchInvitations() {
 
-		$selected = Input::get('selected');
-		$invitations = Invite::where('email', '!=', '')->whereIn( 'id', $selected )->get();
-		$this->sendInvitations( $invitations );
+		$isReminder = (Input::get('reminder'))?true:false;
+
+		if( $isReminder ) {
+
+			$selected = Input::get('selected');
+			$invitations = Invite::where('email', '!=', '')
+									->whereNotNull('confirmed_on')
+									->whereIn( 'id', $selected )
+									->get();
+
+			$this->sendReminders( $invitations );
+			Log::info('Sending Reminders');
+
+		} else {
+
+			$selected = Input::get('selected');
+			$invitations = Invite::where('email', '!=', '')->whereIn( 'id', $selected )->get();
+			$this->sendInvitations( $invitations );
+
+		}
 
 		return Redirect::to('/invitaciones');
 
@@ -143,6 +160,32 @@ class AdminController extends BaseController {
 				$message->from( $invite->host->email , $invite->host->first_name . ' ' . $invite->host->last_name )
 						->to( $invite->email, $invite->first_name . ' ' . $invite->last_name )
 						->subject('Fuiste invitado al Casamiento de Alejandra y Cristian!');
+			});
+
+			$invite->invited_on = new DateTime();
+			$invite->save();
+
+		}
+
+	}
+
+	private function sendReminders( $invitations ) {
+
+		foreach( $invitations as $invite ) {
+
+			if( !$invite->email || $invite->email == '' ) continue;
+
+			$data = array(
+					'images' => [ asset('assets/images/aleycris.png') ],
+					'url' => url('/ver/' . $invite->id )
+				);
+
+			//$this->setHostAccount( $invite );
+
+			Mail::queue('emails.reminder', $data, function($message)  use ( $invite ) {
+				$message->from( $invite->host->email , $invite->host->first_name . ' ' . $invite->host->last_name )
+						->to( $invite->email, $invite->first_name . ' ' . $invite->last_name )
+						->subject('Ya falta poco para el Casamiento de Alejandra y Cristian!');
 			});
 
 			$invite->invited_on = new DateTime();

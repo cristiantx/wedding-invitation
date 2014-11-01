@@ -15,7 +15,6 @@
 			<th>Visto</th>
 			<th>Enviado</th>
 			<th>Estado</th>
-			<th>Accion</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -38,13 +37,14 @@
 			@else
 			<td><span class="label label-default">N/D</span></td>
 			@endif
-			<td><button class="btn btn-default resend-invite">Reenviar</button> <button class="btn btn-default resend-invite">Recordatorio</button></td>
 		</tr>
 		@endforeach
 	</tbody>
 </table>
 <div class="pull-right">
-	<button class="btn btn-primary send-invites" type="submit">Enviar Invitaciones</button>
+	<input type="hidden" id="reminder-flag" name="reminder" value="0">
+	<button class="btn btn-default send-invites" type="submit">Enviar Invitaciones</button>
+	<button class="btn btn-primary send-reminders" type="submit">Enviar Recordatorios</button>
 </div>
 {{ Form::close() }}
 @stop

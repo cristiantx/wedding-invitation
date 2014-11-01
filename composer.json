@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"pda/pheanstalk": "~2.0",
-		"guzzlehttp/guzzle": "~4.0"
+		"guzzlehttp/guzzle": "~4.0",
+		"mews/thumb": "dev-master"
 	},
 	"require-dev": {
 		"way/generators": "2.*"

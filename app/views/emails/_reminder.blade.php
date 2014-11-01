@@ -16,18 +16,23 @@
 							</tr>
 							<tr>
 								<td>
-									<h3 class="center">Fuiste invitado al casamiento de</h3>
+									<h3 class="center">Casamiento de</h3>
 									<img src="{{ $images[0] }}" class="ayc center" alt="Alejandra y Cristian" />
-									<p>Despues de tanto tiempo compartiendo nuestras vidas, decidimos dar el siguiente paso. Nos encantaría compartir este gran momento con vos.</p>
-									<p>Por favor, hacé click en el siguiente botón para saber los detalles de la fiesta, como así también la dirección y los horarios. Es importante que ingreses para confirmar tu asistencia.</p>
+									<p>Ya faltan pocos días para el gran momento y queríamos recordarte información importante para que todo salga perfecto y puedas disfrutar el momento tanto como nosotros.</p>
+									<ul>
+										<li>La Dirección es <strong>Manuel Julian Medel 1386, Monte Grande, Buenos Aires</strong> <a href="https://goo.gl/maps/cp8JO">(Ver Mapa)</a></li>
+										<li>La Ceremonia comienza a las 12:00 del Mediodía, Puntual</li>
+										<li>Recordá llevar tu cámara de fotos!</li>
+										<li>Ponete algo lindo y comodo! Acordate que hay pasto, ojo con los tacos!</li>
+									</ul>
+									<p>Nos vemos el <strong>Sabado 8 de Noviembre</strong>!</p>
 									<hr>
 									<p>
 										<table class="medium-button">
 											<tr>
-												<td><a href="{{ $url }}" class="callout">Click aquí para ver la invitación</a></td>
+												<td><a href="http://alejandraycristian.com" class="callout">Volver a ver la invitación</a></td>
 											</tr>
 										</table>
-
 									</p>
 								</td>
 							</tr>

@@ -70,6 +70,15 @@ $(document).ready(function() {
 			$('.send-invites').prop('disabled', true);
 		});
 
+		$('.send-reminders').click(function() {
+			$('#reminder-flag').val(1);
+		});
+
+
+		$('.send-invites').click(function() {
+			$('#reminder-flag').val(0);
+		});
+
 	}
 
 
