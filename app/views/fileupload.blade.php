@@ -25,6 +25,11 @@
 				</form>
 			</class>
 		</section>
+		<script>
+		Dropzone.options.myAwesomeDropzone = {
+		  createImageThumbnails: false
+		};
+		</script>
 		@if ( App::environment('local') )
 		<script src="//localhost:3100/livereload.js"></script>
 		@endif
