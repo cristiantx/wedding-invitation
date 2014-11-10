@@ -25,7 +25,7 @@
 									<p>
 										<table class="medium-button">
 											<tr>
-												<td><a href="http://alejandraycristian.com/fotos/{{ $invite_id }}" class="callout">Subir mis fotos</a></td>
+												<td><a href="{{ $url }}" class="callout">Subir mis fotos</a></td>
 											</tr>
 										</table>
 									</p>

@@ -177,7 +177,7 @@ class AdminController extends BaseController {
 
 			$data = array(
 					'images' => [ asset('assets/images/aleycris.png') ],
-					'url' => url('/ver/' . $invite->id )
+					'url' => url('/fotos/' . $invite->id )
 				);
 
 			//$this->setHostAccount( $invite );
