@@ -20,7 +20,7 @@
 									<img src="{{ $images[0] }}" class="ayc center" alt="Alejandra y Cristian" />
 									<p>Ya pasó la fecha, y la pasamos genial! Muchas Gracias a todos por compartir este momento tan especial con nosotros.</p>
 									<p>Ahora les vamos a pedir el último favor, y es que suban las fotos que hayan sacado haciendo click en el botón a continuación.</p>
-									<p>¡¡Millones Gracias!!</p>
+									<p>¡¡Millones de Gracias!!</p>
 									<hr>
 									<p>
 										<table class="medium-button">

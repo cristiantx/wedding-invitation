@@ -185,7 +185,7 @@ class AdminController extends BaseController {
 			Mail::queue('emails.reminder', $data, function($message)  use ( $invite ) {
 				$message->from( $invite->host->email , $invite->host->first_name . ' ' . $invite->host->last_name )
 						->to( $invite->email, $invite->first_name . ' ' . $invite->last_name )
-						->subject('Ya falta poco para el Casamiento de Alejandra y Cristian!');
+						->subject('Mandanos tus fotos del Casamiento de Alejandra y Cristian!');
 			});
 
 			$invite->invited_on = new DateTime();
