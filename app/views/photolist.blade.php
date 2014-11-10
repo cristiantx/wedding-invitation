@@ -17,11 +17,15 @@
 				{{ HTML::image('assets/images/aleycris_small.png') }}
 			</header>
 			<class class="thumbs-container">
+				@if( count($files) > 0 )
 				<ul>
 					@foreach($files as $file)
 					<li><img src="{{ $file['thumb'] }}"></li>
 					@endforeach
 				</ul>
+				@else
+				<h2>Aún no subiste ninguna foto.</h2>
+				@endif
 			</class>
 		</section>
 		@if ( App::environment('local') )

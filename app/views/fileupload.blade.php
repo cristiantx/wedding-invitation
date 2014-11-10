@@ -14,7 +14,7 @@
 		<section class="file-upload">
 			<header>
 				<button class="btn btn-primary btn-lg pull-right" onclick="$('.dz-clickable').click()">Agregar Fotos</button>
-				<a href="{{ url("/fotos/{$invite_id}/view") }}" class="btn btn-default btn-lg pull-right" style="margin-right: 20px;">Ver fotos ya subidas</a>
+				<a href="{{ url("/fotos/{$invite_id}/view") }}" class="btn btn-default btn-lg pull-right" style="margin-right: 20px;">Ver tus fotos ya subidas</a>
 				{{ HTML::image('assets/images/aleycris_small.png') }}
 			</header>
 			<class class="dropzone-container">
