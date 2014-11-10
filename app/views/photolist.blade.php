@@ -13,16 +13,15 @@
 	<body>
 		<section class="file-upload">
 			<header>
-				<button class="btn btn-primary btn-lg pull-right" onclick="$('.dz-clickable').click()">Agregar Fotos</button>
-				<a href="{{ url("/fotos/{$invite_id}/view") }}" class="btn btn-default btn-lg pull-right" style="margin-right: 20px;">Ver fotos ya subidas</a>
+				<a class="btn btn-primary btn-lg pull-right" href="{{ url("/fotos/{$invite_id}") }}">Volver</a>
 				{{ HTML::image('assets/images/aleycris_small.png') }}
 			</header>
-			<class class="dropzone-container">
-				<form action="{{ url('fotos/' . $invite_id ) }}" class="dropzone">
-				  <div class="fallback">
-				    <input name="file" type="file" multiple />
-				  </div>
-				</form>
+			<class class="thumbs-container">
+				<ul>
+					@foreach($files as $file)
+					<li><img src="{{ $file['thumb'] }}"></li>
+					@endforeach
+				</ul>
 			</class>
 		</section>
 		@if ( App::environment('local') )

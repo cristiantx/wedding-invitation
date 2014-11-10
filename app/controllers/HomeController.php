@@ -50,6 +50,54 @@ class HomeController extends BaseController {
 	}
 
 
+	public function getPhotos( $invite_id = false ) {
+
+		if( !$invite_id ) return Response::redirect('/');
+
+		$directory = public_path().'/uploads/'. $invite_id;
+		$files = File::files( $directory );
+		$output = array();
+
+		$thumbBaseDirectory = $directory . "/thumbs/";
+		$publicBase = url() . '/uploads/' . $invite_id ;
+
+		if( !File::exists( $thumbBaseDirectory ) ) {
+			File::makeDirectory( $directory . '/thumbs',  $mode = 0777, $recursive = true);
+		}
+
+		foreach( $files as $file ) {
+
+			$filename = basename( $file );
+			$extension = File::extension( $file );
+
+			$fileURI = $publicBase . "/{$filename}";
+
+			$thumbPath = $thumbBaseDirectory . "/{$filename}";
+			$thumbURI = $publicBase . "/thumbs/{$filename}";
+
+			if( strtolower($extension) == 'jpg' || strtolower($extension) == 'jpeg' || strtolower($extension) == 'png'  ) {
+				if( !File::exists( $thumbPath ) ) {
+					Thumb::create( $file )
+						->make('resize', array(200,200))
+						->make('crop', array('center', 100, 100))
+						->save( $thumbBaseDirectory );
+				}
+			}
+
+			$output[] = array(
+					'file' => $fileURI,
+					'thumb' => $thumbURI
+				);
+
+		}
+
+		return View::make('photolist')
+				->with( 'invite_id', $invite_id )
+				->with( 'files', $output );
+
+	}
+
+
 	public function postUpload( $invite_id = false ) {
 
 		if( !$invite_id ) return Response::redirect('/');
@@ -60,15 +108,15 @@ class HomeController extends BaseController {
 		    'file' => 'image|max:30000',
 		);
 
-		$validation = Validator::make($input, $rules);
+		/*$validation = Validator::make($input, $rules);
 
 		if ($validation->fails()) {
 			return Response::make($validation->errors->first(), 400);
-		}
+		}*/
 
 		$file = Input::file('file');
 
-        $extension = File::extension($file->getClientOriginalName());
+        $extension = File::extension( $file->getClientOriginalName() );
         $directory = public_path().'/uploads/'. $invite_id;
         $filename = sha1(time().time()).".{$extension}";
 

@@ -19,6 +19,7 @@ Route::post('/invitacion/{id}/declinar', 'HomeController@declineInvitation');
 
 Route::get('/fotos/{id}', 'HomeController@getUpload');
 Route::post('/fotos/{id}', 'HomeController@postUpload');
+Route::get('/fotos/{id}/view', 'HomeController@getPhotos');
 
 Route::group(array('before' => 'auth.basic'), function() {
 	Route::get('/invitados', 'AdminController@showAdmin');
